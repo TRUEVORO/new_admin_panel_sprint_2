@@ -26,6 +26,7 @@ include(
     'components/database.py',
     'components/intern.py',
     'components/pass_valid.py',
+    'components/logging.py',
 )
 
 # Static files (CSS, JavaScript, Images)
@@ -40,3 +41,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Localization
 LOCALE_PATHS = ['movies/locale']
+
+# Corsheaders settings
+CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:8080',
+]

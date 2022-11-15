@@ -28,7 +28,15 @@ class FilmworkAdmin(admin.ModelAdmin):
     inlines = (GenreFilmworkInline, PersonFilmworkInline)
 
     # Отображение полей в списке
-    list_display = ('title', 'get_genres', 'type', 'creation_date', 'rating', 'created', 'modified')
+    list_display = (
+        'title',
+        'get_genres',
+        'type',
+        'creation_date',
+        'rating',
+        'created',
+        'modified'
+    )
     list_prefetch_related = ('genres',)
 
     def get_queryset(self, request):
