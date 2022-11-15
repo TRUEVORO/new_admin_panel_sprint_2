@@ -72,7 +72,6 @@ class Person(UUIDMixin, TimeStampedMixin):
 
 
 class PersonFilmwork(UUIDMixin):
-
     class RoleType(models.TextChoices):
         DIRECTOR = 'director', _('director')
         PRODUCER = 'producer', _('producer')
@@ -94,7 +93,6 @@ class PersonFilmwork(UUIDMixin):
 
 
 class Filmwork(UUIDMixin, TimeStampedMixin):
-
     class FilmworkType(models.TextChoices):
         MOVIE = 'movie', _('movie')
         TV_SHOW = 'tv_show', _('tv_show')
