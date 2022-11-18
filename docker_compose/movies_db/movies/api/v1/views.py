@@ -1,5 +1,3 @@
-from typing import Any
-
 from django.contrib.postgres.aggregates import ArrayAgg
 from django.db.models import Q
 from django.http import JsonResponse
@@ -13,8 +11,7 @@ class MoviesApiMixin:
     model = Filmwork
     http_method_names = ['get']
 
-    @staticmethod
-    def _aggregate_person(role: Any) -> ArrayAgg:
+    def _aggregate_person(self, role: str) -> ArrayAgg:
         return ArrayAgg(
             'person__full_name',
             distinct=True,

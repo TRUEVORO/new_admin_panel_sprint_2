@@ -19,10 +19,8 @@ services:
     restart: always
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_USER=movies_admin
-      - POSTGRES_PASSWORD=123qwe
-      - POSTGRES_DB=movies_database
+    env_file:
+      - .env.dev
 
 volumes:
   postgres_data:
