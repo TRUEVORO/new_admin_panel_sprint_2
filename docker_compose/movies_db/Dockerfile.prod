@@ -1,4 +1,4 @@
-FROM python:3.9.6-alpine as builder
+FROM python:3.10-alpine as builder
 
 WORKDIR /usr/src/movies_db
 
@@ -18,7 +18,7 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/movies_db/wheels -r 
 
 
 
-FROM python:3.9.6-alpine
+FROM python:3.10-alpine
 
 RUN mkdir -p /home/movies_db
 
