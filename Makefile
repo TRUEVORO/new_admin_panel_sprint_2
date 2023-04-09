@@ -5,6 +5,9 @@ help: ## - Получить информацию о командах
 		-e 's/^\(.\+\):\(.*\)/$(shell tput setaf 6)\1$(shell tput sgr0):\2/' \
 		$(MAKEFILE_LIST) | column -c2 -t -s :
 
+network: ## - Создать общую сеть для сервисов
+	docker network create custom_network
+
 run: ## - Запустить docker-compose
 	docker-compose -f docker_compose/docker-compose.yaml up --build -d
 
@@ -28,12 +31,12 @@ superuser: ## - Создать superuser
 	docker-compose -f docker_compose/docker-compose.yaml exec movies_admin python manage.py createsuperuser --username=web --email=web@example.com
 
 movies_admin: ## - Выполнить полный запуск movies_admin
+	make network
 	make run
 	make collectstatic
 	make flush
 	make migrate
 	make load_data
-#	make superuser
 
 clean: ## - Очистить docker
 	docker stop $$(docker ps -aq)
