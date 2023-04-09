@@ -14,6 +14,8 @@ services:
       - .env
     depends_on:
       - db
+    networks:
+      custom_network:
 
   db:
     image: postgres:15.2-alpine
@@ -22,6 +24,8 @@ services:
       - postgres:/var/lib/postgresql/data
     env_file:
       - .env
+    networks:
+      custom_network:
 
   nginx:
     image: nginx:1.23.3
@@ -33,9 +37,15 @@ services:
       - static:/opt/movies_admin/static
     depends_on:
       - movies_admin
+    networks:
+      custom_network:
     ports:
       - '80:80'
 
 volumes:
   static:
   postgres:
+
+networks:
+  custom_network:
+    external: true
